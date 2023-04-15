@@ -6,7 +6,7 @@ EVAPORATION_RATE:float = 0.5
 ALPHA:float = 1.0
 BETA:float = 1.0
 Q = 1000
-AMOUNT_CYCLES:int = 1000
+AMOUNT_CYCLES:int = 500
 
 #Elitist
 ELITIST_AMOUNT:int = 3
@@ -43,7 +43,6 @@ class Ant:
             pass
         else:
             probabilities = probabilities_strategy.calculate_probabilities(distances, pheromone, self.ant_path)
-            print("The probabilities are: ", probabilities)
             next_point = np.random.choice(options, p=probabilities)
             pass
         #consecuences of the move
@@ -165,7 +164,9 @@ def aco(size_graph,amount_ants) -> np.ndarray:
         cycles = cycles + 1
     
     for i in range (amount_ants):
-        print(ants[i].ant_path)
+        print("Ant: ", i)
+        print("Path: ", ants[i].ant_path)
+        print("Distance: ", ants[i].acu_distance)
         pass
     print(distances)
 
