@@ -33,10 +33,11 @@ class Ant:
         options = np.arange(distances.size, dtype=int)
         probabilities = np.zeros(distances.size, dtype=float)
         probabilities_strategy:ProbabilitiesStrategy = ProbabilitiesStrategyNormal()
-        for i in range (self.ant_path.size-1):
-            distances[self.ant_path[i]] = 0
-            pheromone[self.ant_path[i]] = 0
-            pass
+        if(self.ant_path.size != distances.size):
+            for i in range (self.ant_path.size-1):
+                distances[self.ant_path[i]] = 0
+                pheromone[self.ant_path[i]] = 0
+                pass
     
         if(self.ant_path.size == distances.size):
             next_point = self.ant_path[0]
